@@ -5,8 +5,6 @@
     - name: Verify cluster ready state.
       shell: oc -n middleware-monitoring exec -i prometheus-application-monitoring-0 -c prometheus -- /bin/sh -c "curl http://localhost:9090/api/v1/query?query=ALERTS" | jq .data.result
       register: alerts_response
-    - debug:
-        msg: Alerts -- {{ alerts_response}}
-      # fail:
-      #   msg: "Cluster not ready"
-      # when: boop  
+      fail:
+        msg: "Cluster not ready"
+      when: "'ALERTS' in alerts_result.stderr"  
