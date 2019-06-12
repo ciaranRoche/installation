@@ -1,7 +1,4 @@
 ---
-
-- import_playbook: "./post-installation-verification"
-
 - hosts: localhost
   gather_facts: no
   tasks:
