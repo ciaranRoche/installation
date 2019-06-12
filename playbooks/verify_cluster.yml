@@ -9,4 +9,4 @@
     - name: Verify cluster ready state.
       fail:
         msg: "Cluster not ready, alerts found"
-      when: "'ALERTS' in alerts_response"
+      when: "'ALERTS' in alerts_response.stdout"
