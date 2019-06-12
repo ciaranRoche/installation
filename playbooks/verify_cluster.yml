@@ -3,7 +3,7 @@
   gather_facts: no
   tasks:
     - name: Verify cluster ready state.
-      shell: "oc -n middleware-monitoring exec -i -t prometheus-application-monitoring-0 -c prometheus -- /bin/sh -c \"curl http://localhost:9090/api/v1/query?query=ALERTS\" | jq .data.result"
+      shell: oc -n middleware-monitoring exec -i -t prometheus-application-monitoring-0 -c prometheus -- /bin/sh -c "curl http://localhost:9090/api/v1/query?query=ALERTS" | jq .data.result
       register: alerts_response
     - debug:
         msg: Alerts -- {{ alerts_response}}
