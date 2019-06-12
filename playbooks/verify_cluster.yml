@@ -8,5 +8,5 @@
 
     - name: Verify cluster ready state.
       fail:
-        msg: "Cluster not ready"
-      when: "'ALERTS' not in alerts_response"
+        msg: "Cluster not ready, alerts found"
+      when: "'ALERTS' in alerts_response"
