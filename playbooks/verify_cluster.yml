@@ -12,5 +12,5 @@
     - name: test loop
       debug:
         msg: "{{item.key}}"
-      with_dict: "{{ alerts }}"
+      with_dict: "{{ alerts.metric }}"
       
