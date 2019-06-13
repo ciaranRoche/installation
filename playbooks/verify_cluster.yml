@@ -10,7 +10,7 @@
       alerts: "{{alerts_response.stdout|from_json}}"
 
     - debug:
-      msg: From Json -- {{ alerts }}
+      msg: From Json {{ alerts }}
 
     - debug:
-      msg: Reg -- {{ alerts_response }}
+      msg: Reg  {{ alerts_response.stdout }}
