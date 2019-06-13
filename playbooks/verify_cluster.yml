@@ -13,5 +13,5 @@
         msg: From Json {{ alerts }}
 
     - debug: 
-        msg: "Success - tag defined =>{{  (alerts_response.stdout|from_json)['boop']}}<="  
+        msg: "Success - tag undefined =>{{  (alerts_response.stdout|from_json)['boop']}}<="  
       when:  (alerts_response.stdout|from_json)['boop']  is undefined 
