@@ -13,5 +13,5 @@
         msg: From Json {{ alerts }}
 
     - debug: 
-        msg: "Success - tag undefined =>{{  (alerts_response.stdout|from_json)['metric']}}<="  
-      when:  (alerts_response.stdout|from_json)['metric']  is undefined 
+        msg: "Success - tag undefined =>{{  (alerts_response.stdout|from_json)['ansible_facts']}}<="  
+      when:  (alerts_response.stdout|from_json)['ansible_facts']  is undefined 
