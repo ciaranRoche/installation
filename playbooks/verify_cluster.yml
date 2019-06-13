@@ -7,7 +7,7 @@
       register: alerts_response
     
     - set_fact:
-      alerts: {{alerts_response.stdout|from_json}}
+      alerts: "{{alerts_response.stdout|from_json}}"
 
     - debug:
       msg: From Json -- {{ alerts }}
