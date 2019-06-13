@@ -1,5 +1,5 @@
 ---
-- hosts: localhose
+- hosts: localhost
   gather_facts: no
   tasks:
     - name: Fetch cluster ready state.
