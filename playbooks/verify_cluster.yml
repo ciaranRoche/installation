@@ -16,4 +16,4 @@
         msg: Reg  {{ alerts_response.stdout }}
 
     - debug: msg="Success - tag defined =>{{  (alerts_response.content|from_json)['alerts']}}<="  
-      when:  (json_response.content|from_json)['alerts']  is defined 
+      when:  (alerts_response.content|from_json)['alerts']  is defined 
