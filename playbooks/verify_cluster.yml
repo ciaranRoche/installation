@@ -9,9 +9,6 @@
     - set_fact:
         alerts: "{{alerts_response.stdout|from_json}}"
 
-    - debug:
-        msg: From Json {{ alerts }}
-
     - name: test loop
       debug:
         msg: "{{item.key}}"
