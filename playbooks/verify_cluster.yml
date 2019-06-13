@@ -14,4 +14,4 @@
 
     - debug: 
         msg: "Success - tag defined =>{{  (alerts_response.stdout|from_json)['boop']}}<="  
-        when:  (alerts_response.stdout|from_json)['boop']  is defined 
+      when:  (alerts_response.stdout|from_json)['boop']  is defined 
