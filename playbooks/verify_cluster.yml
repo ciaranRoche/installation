@@ -12,6 +12,6 @@
     - name: test loop
       debug:
         msg: "{{item.value}}"
-      when: "{{item.value.alertname}}" is defined
+      when: "{{item.value.alertname}} is defined"
       with_dict: "{{ alerts }}"
       
