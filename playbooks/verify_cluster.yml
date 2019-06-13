@@ -11,6 +11,6 @@
 
     - name: test loop
       debug:
-        msg: "{{item.value}}"
+        msg: "{{item.value.alertname}}"
       with_dict: "{{ alerts }}"
       
