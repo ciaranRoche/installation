@@ -15,3 +15,9 @@
     - debug: 
         msg: "Success - tag undefined =>{{  (alerts_response.stdout|from_json)['ansible_facts']}}<="  
       when:  (alerts_response.stdout|from_json)['ansible_facts']  is undefined 
+      
+    - name: test loop
+      debug:
+        msg: "{{item.key}}"
+      with_dict: "{{ alerts }}"
+      
