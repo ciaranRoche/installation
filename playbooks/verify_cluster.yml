@@ -23,6 +23,8 @@
     - name: Verify cluster ready state 2
       fail:
         msg: Cluster not ready
-      when: "item.value.alertname is defined" and '"__name__" == "ALERTS"'
+      when: >
+       ("item.value.alertname is defined") and 
+       ('"__name__" == "ALERTS"')
       with_dict: "{{ alerts }}"
       
