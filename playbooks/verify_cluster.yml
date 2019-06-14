@@ -9,22 +9,27 @@
     - set_fact:
         alerts: "{{alerts_response.stdout|from_json}}"
 
-    # - name: test loop
-    #   debug:
-    #     msg: "{{item.value}}"
-    #   when: " item.value.alertname is defined"
-    #   with_dict: "{{ alerts }}"
+    - set_fact:
+        filtered_alerts: "{{ alerts| json_query('metric[?prometheus==`openshift-monitoring/k8s`]') }}"
+
+    - name: test loop
+      debug:
+        msg: "{{item.value}}"
+      when: " item.value.alertname is defined"
+      with_dict: "{{ filtered_alerts }}"
 
     # - name: Verify cluster ready state
     #   fail:
     #     msg: Cluster not ready
     #   when: '"ALERTS" in alerts_response.stdout'  
+
+    # - name:
     
-    - name: Verify cluster ready state 2
-      fail:
-        msg: Cluster not ready
-      when: >
-       ("item.value.alertname is defined") and 
-       ('"__name__" == "ALERTS"')
-      with_dict: "{{ alerts }}"
+    # - name: Verify cluster ready state 2
+    #   fail:
+    #     msg: Cluster not ready
+    #   when: >
+    #    ("item.value.alertname is defined") and 
+    #    ('"__name__" == "ALERTS"')
+    #   with_dict: "{{ alerts }}"
       
