@@ -9,21 +9,20 @@
     - set_fact:
         alerts: "{{alerts_response.stdout|from_json}}"
 
-    - name: test loop
-      debug:
-        msg: "{{item.value}}"
-      when: " item.value.alertname is defined"
-      with_dict: "{{ alerts }}"
+    # - name: test loop
+    #   debug:
+    #     msg: "{{item.value}}"
+    #   when: " item.value.alertname is defined"
+    #   with_dict: "{{ alerts }}"
 
     # - name: Verify cluster ready state
     #   fail:
     #     msg: Cluster not ready
     #   when: '"ALERTS" in alerts_response.stdout'  
     
-
     - name: Verify cluster ready state 2
       fail:
         msg: Cluster not ready
-      when: "item.value.alertname is defined"
+      when: "item.value.alertname is defined" and '"__name__" == "ALERTS"'
       with_dict: "{{ alerts }}"
       
