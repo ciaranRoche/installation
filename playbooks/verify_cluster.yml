@@ -15,8 +15,15 @@
       when: " item.value.alertname is defined"
       with_dict: "{{ alerts }}"
 
-    - name: Verify cluster ready state
+    # - name: Verify cluster ready state
+    #   fail:
+    #     msg: Cluster not ready
+    #   when: '"ALERTS" in alerts_response.stdout'  
+    
+
+    - name: Verify cluster ready state 2
       fail:
         msg: Cluster not ready
-      when: '"ALERTS" in alerts_response.stdout'  
+      when: "item.value.alertname is defined"
+      with_dict: "{{ alerts }}"
       
