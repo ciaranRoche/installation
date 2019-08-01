@@ -224,3 +224,5 @@
   vars:
     secret_name: '{{ threescale_backup_redis_secret }}'
     secret_redis_host: 'system-redis.{{ threescale_namespace }}.svc'
+
+- import_tasks: new_limits.yml

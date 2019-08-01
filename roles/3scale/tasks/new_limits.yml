@@ -1,0 +1,14 @@
+---
+- name: Remove 3scale memory limits
+  shell: |
+    oc patch dc {{item.dc}} --type json -p '[
+      {"op":"add", "path":"/spec/template/spec/containers/{{item.container}}/resources/limits/memory", "value":"10M"},
+      {"op":"remove", "path":"/spec/template/spec/containers/{{item.container}}/resources/limits/memory"}
+    ]'
+  with_items: "{{threescale_remove_limits}}"
+
+- name: Set new 3scale memory and cpu limits
+  shell: | 
+    oc patch dc {{item.dc}} --type json -p '[
+    {"op":"replace","path":"/spec/template/spec/containers/{{item.container}}/resources/requests","value":{"cpu":{{item.cpu}},"memory":{{item.memory}}}}]'
+  with_items: "{{threescale_new_limits}}"

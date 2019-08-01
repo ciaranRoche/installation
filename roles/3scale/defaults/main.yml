@@ -51,3 +51,85 @@ wildcard_policy_param: ""
 threescale_backup_mysql_secret: threescale-mysql-secret
 threescale_backup_postgres_secret: threescale-postgres-secret
 threescale_backup_redis_secret: threescale-redis-secret
+
+# Remove Limits
+threescale_remove_limits:
+  - dc: system-mysql
+    container: 0
+  - dc: system-app
+    container: 0
+  - dc: system-app
+    container: 1
+  - dc: system-app
+    container: 2
+
+# New Limits
+threescale_new_limits:
+  - dc: system-mysql
+    cpu: 25m
+    memory: 536.9M
+    container: 0
+  - dc: zync-database
+    cpu: 5m
+    memory: 60M
+    container: 0
+  - dc: system-redis
+    cpu: 100m
+    memory: 600M
+    container: 0
+  - dc: system-memcache
+    cpu: 5m
+    memory: 10M
+    container: 0
+  - dc: system-sphinx 
+    cpu: 8m
+    memory: 268.4M
+    container: 0
+  - dc: system-sidekiq 
+    cpu: 10m
+    memory: 350M
+    container: 0
+  - dc: system-sidekiq 
+    cpu: 10m
+    memory: 350M
+    container: 0
+  - dc: system-app
+    cpu: 15m
+    memory: 1887.4M
+    container: 0
+  - dc: system-app
+    cpu: 15m
+    memory: 1887.4M
+    container: 1
+  - dc: system-app
+    cpu: 15m
+    memory: 1887.4M
+    container: 2
+  - dc: backend-redis
+    cpu: 100m
+    memory: 10M
+    container: 0
+  - dc: backend-worker
+    cpu: 15m
+    memory: 30M
+    container: 0
+  - dc: backend-listener
+    cpu: 50m
+    memory: 300M
+    container: 0
+  - dc: backend-cron
+    cpu: 5m
+    memory: 20M
+    container: 0
+  - dc: apicast-wildcard-router
+    cpu: 12m
+    memory: 16M
+    container: 0
+  - dc: apicast-staging 
+    cpu: 5m
+    memory: 32.M
+    container: 0
+  - dc: apicast-production
+    cpu: 50m
+    memory: 50M
+    container: 0
